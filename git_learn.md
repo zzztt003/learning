@@ -1,69 +1,76 @@
 # Git
 **一种分布式版本控制系统**
-_使用仓库存储每个文件的版本变化，可恢复_
-_svn、是集中式的版本控制系统_
-_分布式的是所有本地都有完整的版本库_
+使用仓库存储每个文件的版本变化，可恢复 
+svn、是集中式的版本控制系统 
+分布式的是所有本地都有完整的版本库 
 
-典型工作流程：
+典型工作流程： 
 ![image.png](https://cdn.nlark.com/yuque/0/2024/png/35664476/1721720046234-9598063b-4969-4078-873b-89d2c186c8ae.png#averageHue=%23828282&clientId=uefd47a24-4a55-4&from=paste&height=546&id=u7f9b8031&originHeight=1365&originWidth=858&originalType=binary&ratio=2.5&rotation=0&showTitle=false&size=140619&status=done&style=none&taskId=u735a237e-6e45-49d7-8587-f01154de809&title=&width=343)
 ![image.png](https://cdn.nlark.com/yuque/0/2024/png/35664476/1721720066219-7098d618-42ac-4f73-b7fd-6fe492ebbbe7.png#averageHue=%239f9f9f&clientId=uefd47a24-4a55-4&from=paste&height=164&id=u5e87beb7&originHeight=409&originWidth=898&originalType=binary&ratio=2.5&rotation=0&showTitle=false&size=44706&status=done&style=none&taskId=u5a0187da-022e-4c98-90d6-0b6f517a3be&title=&width=359.2)
 
 
 # 基础
 ### 安装和配置
-cmd git -v 查看版本
-windows可以使用git bash
+cmd git -v 查看版本 
+windows可以使用git bash 
 
-> 配置用户名和邮箱，查看配置信息
-
-![image.png](https://cdn.nlark.com/yuque/0/2024/png/35664476/1721720889498-56250e37-2ceb-48df-b18d-52631a441f04.png#averageHue=%230b0a08&clientId=uefd47a24-4a55-4&from=paste&height=152&id=u7514480a&originHeight=381&originWidth=767&originalType=binary&ratio=2.5&rotation=0&showTitle=false&size=46433&status=done&style=none&taskId=u418fec8a-0f57-4ede-b54f-5528b6a3b9b&title=&width=306.8)
+![配置用户名和邮箱，查看配置信息 ](https://cdn.nlark.com/yuque/0/2024/png/35664476/1721720889498-56250e37-2ceb-48df-b18d-52631a441f04.png#averageHue=%230b0a08&clientId=uefd47a24-4a55-4&from=paste&height=152&id=u7514480a&originHeight=381&originWidth=767&originalType=binary&ratio=2.5&rotation=0&showTitle=false&size=46433&status=done&style=none&taskId=u418fec8a-0f57-4ede-b54f-5528b6a3b9b&title=&width=306.8) 
 版本库，又叫仓库，repository，简称repo
 
 ### 简单命令
 ```bash
+初始化仓库：
 git init
+克隆仓库：
 git clone
 ```
-:::tips
+
+```markdown
 mkdir dirname ——创建新目录
 cd dirname ——进入
 ls ——枚举所有目录（不包括隐藏）
 ls -a ——包括隐藏 -ltr
 cd .. ——退回上级目录
-:::
+```
 
 ```bash
+查看仓库状态：
 git status
 ```
 
-:::tips
+```markdown
 echo "this is the first file" > file1.txt  ——创建文件
 cat file ——查看文件
 vi file ——修改文件
 i ——编辑界面进行内容编辑
 esc ——退出内容编辑
 :wq ——保存并退出编辑界面
-rm file ——删除文件
+rm file ——删除文件 
 
 git add *.txt ——添加所有以txt结尾的文件
 git add .  ——添加当前文件夹下所有文件
-:::
+```
 ```bash
+将文件加入暂存区：
 git add filename
   . 所有文件
 ```
 ```bash
+将某暂存区文件改为untrack：
 git rm --cache filename
 ```
 
 ```bash
+将暂存区文件提交到版本库：
 git commit （-m "提交信息"）
 ```
 ```bash
+查看版本库提交历史记录：
 git log （--oneline 更简洁）
 ```
 
 ```bash
+回退到某个版本：
 git reset 参数 版本id
   --soft 本地仓库回退到某一个版本，保留工作区和暂存区的所有修改内容（把提交的放回暂存区？）
   --hard ，丢弃工作区和暂存区的所有内容（删除所有提交？）
@@ -75,6 +82,7 @@ git reset 参数 版本id
 ```
 
 ```bash
+列出当前目录所有被git管理的文件（主要是暂存区）：
 git ls-files
   -c / --cache 仅显示暂存区中的
   -m / --modified
@@ -84,10 +92,12 @@ git ls-files
 ```
 
 ```bash
+查看所有git相关的操作记录：
 git reflog
 ```
 
 ```bash
+查看xx和yy之间的差异：
 只显示xx和yy中内容不同的同名文件之间的差异
 
 git diff 
@@ -101,6 +111,7 @@ git diff
 ```
 
 ```bash
+从版本库中删除文件：
 git rm 参数 filename
   无参数 把文件从工作区和暂存区都删除
   --cached 从暂存区删除，但工作区保留
